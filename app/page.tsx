@@ -1,9 +1,10 @@
-import Image from "next/image";
+
+import { Appbar } from "./components/Appbar";
 
 export default function Home() {
   return (
-    <div className="bg-green-300 flex h-screen w-screen items-center justify-center">
-      Home
+    <div className=" flex h-screen items-center justify-center">
+      <Appbar />
     </div>
   );
 }
