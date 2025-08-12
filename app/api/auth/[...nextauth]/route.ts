@@ -1,3 +1,7 @@
+
+import { User } from "@/lib/db";
+import axios from "axios";
+import bcrypt from "bcryptjs";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
@@ -18,11 +22,30 @@ const handler = NextAuth({
       async authorize(credentials, req) {
         const { email, password } = credentials as User;
         
-       if (email === "test@example.com" && password === "123") {
-          return { id: "1", name: "Test User", email };
+        if (!email || !password) {
+          throw new Error("Email and password are required");
         }
+        //! add if signup is needed
 
-        return null;
+
+        // const response = await axios.post("http://localhost:3000/api/signin", {
+        //   email,
+        //   password
+        // });
+        // const { data } = response;
+
+        // if (data.status === 200) {
+        //   return data.data;
+        // }
+
+        const user = await User.findOne({ email });
+
+        const validUSer = await bcrypt.compare(password, user?.password);
+
+        if (!validUSer) {
+          throw new Error("Invalid email or password");
+        }
+          return user;
       }
     }) 
   ]

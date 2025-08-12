@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -12,3 +12,11 @@ export const connectDB = async () => {
     console.error(error);
   }
 };
+
+
+const UscerSchema = new Schema({
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+});
+
+export const User = mongoose.models.User || mongoose.model("User", UscerSchema);
