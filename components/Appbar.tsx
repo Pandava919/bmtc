@@ -7,10 +7,9 @@ import { useRouter } from "next/navigation";
 export function Appbar() {
     const session = useSession();
     const router = useRouter()
-    console.log(session)
     const logOut =  () => {
-        signOut({redirect: false});
-        router.push('/signin')
+        signOut({ redirect: true, callbackUrl: '/signin' });
+        // router.push('/signin')
     }
 
     const logIn = () => {
