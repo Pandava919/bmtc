@@ -9,6 +9,7 @@ export const connectDB = async () => {
   try {
     await mongoose.connect(MONGODB_URL);
     console.log("MongoDB connected");
+    return true;
   } catch (error) {
     console.error(error);
   }
@@ -30,7 +31,7 @@ const BusDataSchema = new Schema({
   destination: { type: String, required: true },
   noOfTrips: { type: Number, required: true },
   busNumber: { type: String, required: true },
-  RegestrationNumber: { type: String, required: true },
+  regestrationNumber: { type: String, required: true },
   timings: { type: [String] },
 }, 
 {

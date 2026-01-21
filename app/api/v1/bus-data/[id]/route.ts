@@ -1,15 +1,34 @@
-import { BusInfo } from "@/lib/db";
+import { BusInfo, connectDB } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
-async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+async function GET(req?: NextRequest, params ?: { params: { id: string } }) {
     const busParams = await params;
-    const busId = busParams.id;
+    const busId = busParams?.params.id;
+    console.log(busId)
+    connectDB()
+
+    if (!busId) {
+        return NextResponse.json({ message: 'No ID provided' }, { status: 400 });
+    }
+
     const busData = await BusInfo.findById(busId);
     if (!busData) {
-        return NextResponse.json({ message: "Bus data not found" }, { status: 404 });
+        return NextResponse.json(
+            { message: "Bus data not found" },
+            { status: 404 }
+        );
     }
-    console.log(busData);
-    return NextResponse.json({ busData }, { status: 200 });
+    if (busData) {
+        return NextResponse.json(
+            { busData },
+            { status: 200 }
+        );
+    }
+
+    return NextResponse.json(
+        {message: 'Something went wrong'},
+        {status: 500}
+    );
 }
 
 async function PUT(req: NextRequest, { params }: { params: { id: string } }) {

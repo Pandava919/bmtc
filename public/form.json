@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Bus Number",
+        "name": "busNumber",
+        "type": "text",
+        "placeholder": "Enter Bus Number",
+        "required": true
+    },
+    {
+        "title": "Route",
+        "name": "route",
+        "type": "text",
+        "placeholder": "Enter Route",
+        "required": true
+    },
+    {
+        "title": "Bus Type",
+        "name": "busType",
+        "type": "text",
+        "placeholder": "Enter Bus Type",
+        "required": true
+    },
+    {
+        "title": "Start Date",
+        "name": "startDate",
+        "type": "date",
+        "placeholder": "Select Start Date",
+        "required": true
+    },
+    {
+        "title": "Start Location",
+        "name": "startLocation",
+        "type": "text",
+        "placeholder": "Enter Start Location",
+        "required": true
+    },
+    {
+        "title": "Destination",
+        "name": "destination",
+        "type": "text",
+        "placeholder": "Enter Destination",
+        "required": true
+    },
+    {
+        "title": "No of Trips",
+        "name": "noOfTrips",
+        "type": "number",
+        "placeholder": "Enter Number of Trips",
+        "required": true
+    },
+    {
+        "title": "Registration Number",
+        "name": "regestrationNumber",
+        "type": "text",
+        "placeholder": "Enter Registration Number",
+        "required": true
+    },
+    {
+        "title": "Timings",
+        "name": "timings",
+        "type": "time",
+        "placeholder": "Enter Timings (comma separated)",
+        "required": false
+    }
+]

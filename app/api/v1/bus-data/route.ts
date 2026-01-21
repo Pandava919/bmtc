@@ -33,6 +33,7 @@ async function POST(req: NextRequest, res: NextResponse) {
     if (!body) {
         return NextResponse.json({ message: 'No data provided' }, { status: 400 });
     }
+    console.log(body);
     const { busType, tripDate, startLocation, destination, noOfTrips, busNumber, RegestrationNumber, timings } = body;
 
     if (!busType || !tripDate || !startLocation || !destination || !noOfTrips || !busNumber || !RegestrationNumber) {
@@ -56,5 +57,4 @@ async function POST(req: NextRequest, res: NextResponse) {
 export { 
     GET,
     POST,
-    DELETE
 }

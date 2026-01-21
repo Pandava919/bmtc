@@ -20,24 +20,10 @@ export default function SignIn() {
       password,
       redirect: true,
       callbackUrl: '/dashboard',
-    })
+    });
     console.log(response);
-    if (response?.status === 200) {
-      router.push('/dashboard')
-    }
-    // if (!email || !password) {
-    //     return;
-    // }
-    // try {
-    //     const response = await axios.post("http://localhost:3000/api/signin", {
-    //         email,
-    //         password
-    //     });
-    //     if (response.data.status === 200) {
-    //         router.push('/dashboard');
-    //     }
-    // } catch (error) {
-    //     console.log(error?.message || "An error occurred during sign in");
+    // if (response?.status === 200) {
+    //   router.push('/dashboard')
     // }
   }
 
@@ -52,7 +38,7 @@ export default function SignIn() {
             <Input type="email" placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />
             <Input type="password" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} />
             <Button
-              className="w-24 bg-gray-400 font-semibold"
+              className="w-24 bg-gray-400 font-semibold hover:bg-gray-500"
               type="submit"
               variant="secondary"
               disabled={!(!!email && !!password)}
